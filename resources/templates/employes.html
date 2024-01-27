@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+	<section
+		style="align-items: center; flex-direction: column; justify-content: center; display: flex">
+		<h1>Todos los empleados</h1>
+
+		<div class="filtre">
+
+			<form th:action="@{/employes}" method="GET">
+				<select name="genre" class="filter" onchange="this.form.submit()">
+					<option value="">All</option>
+					<option value="m" th:selected="${selectedGenre == 'm'}">Male</option>
+					<option value="f" th:selected="${selectedGenre == 'f'}">Female</option>
+				</select>
+			</form>
+
+		</div>
+
+		<table style='margin-top: 15px' class="table" border="1">
+			<thead>
+				<tr>
+					<th scope="col">Id Employe</th>
+					<th scope="col">Nom Employe</th>
+					<th scope="col">Genre</th>
+					<th scope="col">Salaire</th>
+					<th score="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e:${employes}" th:object="${e}">
+					<td scope="row" th:text="${e.idemploye}"></td>
+					<td th:text="${e.nomemploye}"></td>
+					<td th:text="*{genre}"></td>
+					<td th:text="*{salaire}"></td>
+					<td>
+						<form th:action="'/deleteemp/' + ${e.idemploye}" th:method="post">
+							<button style="margin-top: 15px;">Delete</button>
+						</form>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</section>
+</body>
+</html>
