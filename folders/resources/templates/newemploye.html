@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ajouter nouveau Employe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<form th:action="@{/addemploye}" th:method="post"
+		style="display: flex; flex-direction: column; width: 50%; gap: 10px; margin: 0 auto">
+
+		<input type="text" name="nom" placeholder="nom" required> <input
+			type="text" name="genre" placeholder="genre" required> <input
+			type="number" name="salaire" placeholder="salaire" required>
+		<button type="submit">New Employe</button>
+
+	</form>
+
+
+
+</body>
+</html>
